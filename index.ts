@@ -61,16 +61,42 @@
 // } as const      // Object 자료를 완전히 잠가놓고 싶으면 as const 쓰기
 
 
-type 회원정보 = {
-    plusOne : (x: number) => number,
-    changeName: () => void
-}
+// type 회원정보 = {
+//     plusOne : (x: number) => number,
+//     changeName: () => void
+// }
 
-type 함수타입1 = (a: string) => string;
-type 함수타입2 = (a: string) => number;
+// type 함수타입1 = (a: string) => string;
+// type 함수타입2 = (a: string) => number;
 
-function 그냥함수(x: string, func1: 함수타입1, func2: 함수타입2) {
-    let result1 = func1(x);
-    let result2 = func2(result1);
-    console.log(result2);
-}
+// function 그냥함수(x: string, func1: 함수타입1, func2: 함수타입2) {
+//     let result1 = func1(x);
+//     let result2 = func2(result1);
+//     console.log(result2);
+// }
+
+let 제목 = document.querySelector('#title');    //union type(null 혹은 element)
+// if(제목 != null) {
+//     제목.innerHTML = 'nice to m';
+// }
+// if(제목 instanceof Element) {
+//     제목.innerHTML = 'nice to m';
+// }
+
+// let 버튼 = document.getElementById("button");
+// 버튼?.addEventListener("click", function() {
+
+// })
+
+// let 이미지 = document.querySelector("#image");
+// if(이미지 instanceof HTMLImageElement) {
+//     이미지.src = "new.jpg";
+// }
+
+let 링크변경 = document.querySelectorAll(".naver");
+
+링크변경.forEach((a) => {
+    if(a instanceof HTMLAnchorElement) {
+        a.href = "https://kakao.com";
+    }
+})
