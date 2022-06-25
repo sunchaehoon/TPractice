@@ -1,70 +1,76 @@
-// function chgname(x? :string) :void{
-//     if(x) {
-//         console.log("dkssudgktpdy " + x);
-//     } else {
-//         console.log("왜입력안함");
-//     }
+// type Animal = string | number | undefined;
+
+// let 동물 :Animal = "kim";   // type alias (타입 변수)
+
+// type Person = {name : string, age : number};
+// let 사람 :Person = {name : "kim", age : 20};
+
+// type Friend = {
+//     readonly name? : string;     // readonly --> object 자료 수정 막을 수 있음(에러)
+// }   // ? -> 옵션(name?은 string | undefined와 같은 뜻)
+
+// const 친구 :Friend = {
+//     name : '엠버'
+// }
+// // 친구.name = '유라'; //에러
+
+// type Name = string;
+// type Age = number;
+// type Person = Name | Age;   //type변수 union type로 합치기 가능
+
+// type PositionX = {x : number};
+// type PositionY = {y : number};
+// // 같은 이름의 type 변수는 재정의 불가능
+
+// type NewType = PositionX & PositionY;   // & 연산자로 object 타입 extend
+// type New2Type = PositionX & PositionX;
+
+// let position :NewType = {x : 10, y : 20};
+
+// type Aobject = {
+//     color? :string,
+//     size :number,
+//     readonly position :number[]
 // }
 
-// function cntnum(x :number | string) :number{
-//     return x.toString().length;
+// type Signup = {
+//     name: string,
+//     phone: number,
+//     email: string
 // }
 
-// function mryChc(money :number, house :boolean, apl :string) :string | void {
-//     let score :number = 0;
-//     score += money;
-//     if (house === true) {
-//         score += 500;
-//     }
-//     if (apl === '상') {
-//         score += 100;
-//     }
-//     if (score >= 600) {
-//         return '결혼가능';
-//     }
+// let 회원 = {
+//     name: "김철수",
+//     phone: 123,
+//     email: 'abc@naver.com'
 // }
 
-// console.log(mryChc(100, true, '상'));
+// type Adult = {adult: boolean};
 
-// type이 아직 하나로 확정되지 않았을 경우 Type Narrowing을 써야함
-// Type Narrowing --> if문 등으로 타입을 하나로 정해주는 것
-// function 내함수(x :number | string) {   
-//     // if(typeof x === 'string') {
-//     //     return x + "1"
-//     // } else {
-//     //     return x + 1
-//     // }
+// type NewSignup = Signup & Adult;
 
-//     let array :number[] = [];
-//     if(typeof x === "number") {
-//         array[0] = x;
-//     }
+// let 이름: 123;  // Literal types(이름 변수엔 무조건 123만 들어올 들어올 수 있음)
+// 변수에 뭐가 들어갈지 더 엄격하게 관리 가능, 자동완성 편함
 
-//     array[1] = x as number;   // assertion(타입 덮어쓰기)
+// function Rsp(me: 'rock' | 'scissor' | 'paper') : ('rock' | 'scissor' | 'paper')[] {
+//     return ["rock", "scissor"];
 // }
 
-// function chgCharnum(x :number | string) {
-//     if(typeof x === "string") {
-//         return Number(x);
-//     }
-
-//     console.log(x);
-// }
+// let 자료 = {
+//     name: 'kim'
+// } as const      // Object 자료를 완전히 잠가놓고 싶으면 as const 쓰기
 
 
-let 철수쌤 = { subject : 'math' };
-let 영희쌤 = { subject : ['science', 'english'] };
-let 민수쌤 = { subject : ['science', 'art', 'korean'] };
-
-function endSbj(sbj :{subject : string | string[]}) {
-    if(typeof sbj.subject === "string") {
-        return sbj.subject;
-    } else if(Array.isArray(sbj.subject)) {     //Array.isArray() --> 문자열인지 확인
-        return sbj.subject[sbj.subject.length-1];   
-    } else {
-        return 'ㅇ';
-    }
+type 회원정보 = {
+    plusOne : (x: number) => number,
+    changeName: () => void
 }
-console.log(endSbj({subject : ['english', 'art']}));
-console.log(endSbj({subject : 'english'}));
 
+type 함수타입1 = (a: string) => string;
+type 함수타입2 = (a: string) => number;
+
+function 그냥함수(x: string, func1: 함수타입1, func2: 함수타입2) {
+    let result1 = func1(x);
+    let result2 = func2(result1);
+    console.log(result2);
+}
