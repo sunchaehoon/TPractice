@@ -27,13 +27,21 @@ let [변수1, 변수2] = ['이름', 100];
 // console.log(maxValue(4, 6, 7, 9));
 
 
-type UserType = {
-    user: string,
-    comment: number[],
-    admin: boolean
-}
+// type UserType = {
+//     user: string,
+//     comment: number[],
+//     admin: boolean
+// }
 
-function 함수({user, comment, admin}: UserType) :void {
-    console.log(user, comment, admin);
+// function 함수({user, comment, admin}: UserType) :void {
+//     console.log(user, comment, admin);
+// }
+// 함수({user: "kim", comment: [3, 5, 4], admin: false});
+
+
+type PriceType = (number | string | boolean)[];
+
+function 함수([a, b, c] : PriceType) {
+    console.log(a, b, c);
 }
-함수({user: "kim", comment: [3, 5, 4], admin: false});
+함수([40, 'wine', false])
